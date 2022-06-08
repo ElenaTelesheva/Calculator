@@ -1,0 +1,151 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #8400ff, #9932CC);
+}
+
+.calculator-block {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(4, calc(500px / 4));
+    grid-template-rows: minmax(120px, auto) repeat(6, 100px);
+}
+
+.calculator-block > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.calculator-block > button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+.output {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: auto;
+    background-color: #fff;
+    color: #000;
+    padding: 5px 0;
+    border-radius: 6px;
+    right: 105%;
+    position: absolute;
+    z-index: 1;
+    font-size: 1rem;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.main_block {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+
+#history_block {
+    /*background-color: rgba(0, 0, 0, 0.75);*/
+    background-color: rgba(255, 255, 255, 0.75);
+    color: white;
+    overflow-y: scroll;
+    width: 500px;
+    height: 720px;
+
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    gap: 1rem;
+}
+
+#history_block::after, #history_block::before {
+    display: block;
+    content: '';
+    height: 1rem;
+}
+
+#history_block > div {
+    border: 2px solid lavenderblush;
+    padding: 0.5em 1em;
+    color: black;
+    font-size: 18px;
+    box-shadow: 0 0 5px;
+    background-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+@media (max-width: 1024px) {
+    body {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main_block {
+        flex-direction: column;
+        justify-content: center;
+        width: 320px;
+        min-height: 100vh;
+        padding: 2rem 0;
+    }
+
+    .calculator-block {
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        grid-template-columns: repeat(4, calc(320px / 4));
+        grid-template-rows: minmax(120px, auto) repeat(6, 70px);
+    }
+
+    #history_block {
+        /*flex-direction: column-reverse;*/
+        width: unset;
+        height: 120px;
+    }
+}
